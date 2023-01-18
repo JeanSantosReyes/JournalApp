@@ -84,7 +84,7 @@ export const NoteView = () => {
                 // Eliminar nota
                 dispatch(startDeletingNote());
             } else {
-                Swal.fire(`${title} no se ha eliminado`);
+                Swal.fire(`${title} No se ha eliminado`);
             }
         });
 
