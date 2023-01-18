@@ -44,7 +44,7 @@ npm install firebase
 
 1. Ir al a consola de Firebase
 2. Seleccionar proyecto
-3. Ir a Authentication
+3. Ir a `Authentication`
    * Clic en `Comenzar`
 4. Marcar los proveedores que se van usar para la autenticacion en la aplicacion
    * Habilitar Correo y contraseña
@@ -57,6 +57,56 @@ npm install firebase
    * startGoogleSignIn => SignInWithGoogle
 7. Configuracion en el archivo `store/auth/authSlice.js`
 
+## Firestore o Cloud Firestore
+
+1. Ir al a consola de Firebase
+2. Seleccionar proyecto
+3. Ir a Cloud Firestore
+   * Clic en `Comenzar`
+   * Iniciar en modo de produccion
+   * Seleccionar ubicacion de la base de datos
+4. Configuracion en el archivo `store/journal/thunks.js`
+5. Configuracion en el archivo `store/journal/journalSlice.js`
+6. Configuracion en el archivo `journal/pages/JournalPage.jsx`
+7. En las reglas de Firestore modificar/actualizar:
+   * `allow read, write: if request.auth != null;`
+   * Publicar reglas
+
+## Sweet Alert 2
+Mensajes de alerta [Pagina Oficial](https://sweetalert2.github.io/)
+```
+npm install sweetalert2
+```
+Añadir libreria de css donde se utilice
+```
+import 'sweetalert2/dist/sweetalert2.css';
+```
+
+## Cloudinary
+Es un servicio que permite Alojar imagenes y videos [Pagina Oficial de Cloudinary](https://cloudinary.com/)
+1. Crear una cuenta / Iniciar sesion
+2. Configuracion
+   * Ir a Upload
+   * Buscar Upload presets
+   * Clic en Add upload preset
+   * Colocamos nombre al preset (ej: react-journal)
+   * Signing Mode: Unsigned
+   * Establecer nombre a Folder: journal
+   * Dejar el resto por Default y Guardar
+3. En Media Library (biblioteca) se deben subir las imagenes
+
+## Peticiones HTTP - API 
+POST
+```
+https://api.cloudinary.com/v1_1/cloudName/upload
+
+https://api.cloudinary.com/v1_1/app-react-jasr/upload
+body {
+   file: imagen
+   upload_preset: react-journal
+}
+```
+[Eliminar Imagen de Clooudinary al eliminar Nota](https://www.udemy.com/course/react-cero-experto/learn/lecture/20205002#questions/18730056)
 ## Validar formularios (NO SE APLICO EN ESTE PROYECTO)
 [Validar formularios en React](https://www.npmjs.com/package/validator)
 ```

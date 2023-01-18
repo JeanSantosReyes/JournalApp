@@ -9,15 +9,14 @@ import { useForm } from "../../hooks/useForm";
 import { startGoogleSignIn, startLoginWithEmailPassword } from "../../store/auth/thunks";
 
 const formData = {
-    email: 'jean@google.com',
-    password: '123456'
+    email: '',
+    password: ''
 }
 
 export const LoginPage = () => {
 
     // xs = dispositivos pequeños, pantallas pequeñas
     // sx = laptops, pc, pantallas grandes
-
 
     const { status, errorMessage } = useSelector(state => state.auth);
 

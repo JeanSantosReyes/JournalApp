@@ -23,7 +23,6 @@ export const RegisterPage = () => {
     // xs = dispositivos pequeños, pantallas pequeñas
     // sx = laptops, pc, pantallas grandes
 
-
     const dispatch = useDispatch();
 
     const [formSubmitted, setFormSubmitted] = useState(false);
@@ -43,8 +42,6 @@ export const RegisterPage = () => {
 
     return (
         <AuthLayout title="Crear cuenta">
-
-            <h1>FormValid: {isFormValid ? 'Correcto' : 'Incorrecto'}</h1>
 
             <form onSubmit={onSubmit} className="animate__animated animate__fadeIn animate_faster">
                 <Grid container>
@@ -92,7 +89,7 @@ export const RegisterPage = () => {
                     </Grid>
 
                     <Grid container spacing={2} sx={{ mb: 2, mt: 1 }}>
-                        <Grid item xs={12} display={!!errorMessage ? '' : 'none'}>
+                        <Grid item xs={12} display={(!!errorMessage && isFormValid) ? '' : 'none'}>
                             <Alert severity='error'>
                                 {errorMessage}
                             </Alert>
@@ -102,7 +99,7 @@ export const RegisterPage = () => {
                                 variant="contained"
                                 fullWidth
                                 type='submit'
-                                disabled={isCheckingAuthentication}
+                                disabled={isCheckingAuthentication || !isFormValid}
                             >
                                 Crear una cuenta
                             </Button>

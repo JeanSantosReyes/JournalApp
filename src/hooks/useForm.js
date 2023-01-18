@@ -12,6 +12,11 @@ export const useForm = (initialForm = {}, formValidations = {}) => {
         // eslint-disable-next-line
     }, [formState]);
 
+    // Cada que el initialForm se dispara este efecto
+    useEffect(() => {
+        setFormState(initialForm);
+    }, [initialForm])
+
 
     const isFormValid = useMemo(() => {
         for (const formValue of Object.keys(formValidation)) {

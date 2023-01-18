@@ -37,6 +37,9 @@ export const registerUserWithEmailPassword = async ({ email, password, displayNa
 
     } catch (error) {
         const errorMessage = error.message;
+
+        if (errorMessage === 'Firebase: Error (auth/network-request-failed).') return { ok: false, errorMessage: 'Sin conexion a internet' };
+
         return {
             ok: false,
             errorMessage
@@ -56,6 +59,11 @@ export const loginWithEmailPassword = async ({ email, password }) => {
 
     } catch (error) {
         const errorMessage = error.message;
+
+        if (errorMessage === 'Firebase: Error (auth/user-not-found).') return { ok: false, errorMessage: 'Correo no encontrado' };
+        if (errorMessage === 'Firebase: Error (auth/wrong-password).') return { ok: false, errorMessage: 'Contraseña incorrecta' };
+        if (errorMessage === 'Firebase: Error (auth/invalid-email).') return { ok: false, errorMessage: 'Ingresar correo y contraseña' };
+
         return {
             ok: false,
             errorMessage
